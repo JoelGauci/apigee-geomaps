@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<ProxyEndpoint name="default">
+    <Description/>
+    <FaultRules/>
+    <PreFlow name="PreFlow">
+        <Request>
+            <Step>
+                <Name>Verify-API-Key</Name>
+                <Condition>request.verb != "OPTIONS"</Condition>
+            </Step>
+            <Step>
+                <Name>Quota-Enforcement</Name>
+                <Condition>request.verb != "OPTIONS"</Condition>
+            </Step>
+            <Step>
+                <Name>Key-Value-Map-Operations-GetMapsKey</Name>
+                <Condition>request.verb != "OPTIONS"</Condition>
+            </Step>
+            <Step>
+                <Name>Assign-Message-SetKey</Name>
+                <Condition>request.verb != "OPTIONS"</Condition>
+            </Step>
+        </Request>
+        <Response/>
+    </PreFlow>
+    <PostFlow name="PostFlow">
+        <Request/>
+        <Response/>
+    </PostFlow>
+    <Flows>
+        <Flow name="GET /json">
+            <Description/>
+            <Request/>
+            <Response>
+                <Step>
+                    <Name>Extract-Variables-GeocodeFromResponse</Name>
+                </Step>
+                <Step>
+                    <Name>Assign-Message-SetResponse</Name>
+                </Step>
+            </Response>
+            <Condition>(proxy.pathsuffix MatchesPath "/json") and (request.verb = "GET")</Condition>
+        </Flow>
+        <Flow name="CORS preflight">
+            <Description>CORS preflight</Description>
+            <Request>
+                <Step>
+                    <Name>Add-CORS</Name>
+                </Step>
+            </Request>
+            <Response/>
+            <Condition>request.verb = "OPTIONS"</Condition>
+        </Flow>
+    </Flows>
+    <HTTPProxyConnection>
+        <BasePath>/v1/geocode</BasePath>
+        <Properties/>
+        <VirtualHost>secure</VirtualHost>
+    </HTTPProxyConnection>
+    <RouteRule name="NoRoute">
+        <Condition>request.verb == "OPTIONS"</Condition>
+    </RouteRule>
+    <RouteRule name="default">
+        <TargetEndpoint>default</TargetEndpoint>
+    </RouteRule>
+</ProxyEndpoint>

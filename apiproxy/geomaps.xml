@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<APIProxy revision="1" name="geomaps">
+    <Basepaths>/v1/geocode</Basepaths>
+    <ConfigurationVersion majorVersion="4" minorVersion="0"/>
+    <CreatedAt>1548152258062</CreatedAt>
+    <CreatedBy>joelgauci@google.com</CreatedBy>
+    <Description>geomaps API used to geocode specific address.
+</Description>
+    <DisplayName>geomaps</DisplayName>
+    <LastModifiedAt>1548152456565</LastModifiedAt>
+    <LastModifiedBy>defaultUser</LastModifiedBy>
+    <ManifestVersion>SHA-512:5592dcec1130ec5673f764300b0c35bf7cb19b244d1760afb78ec653cf22409963e0df5541fdca211a27945733b93e6d48fc052321a58e7ca36ce5a67e3816be</ManifestVersion>
+    <Policies>
+        <Policy>Add-CORS</Policy>
+        <Policy>Assign-Message-SetKey</Policy>
+        <Policy>Assign-Message-SetResponse</Policy>
+        <Policy>Extract-Variables-GeocodeFromResponse</Policy>
+        <Policy>Key-Value-Map-Operations-GetMapsKey</Policy>
+        <Policy>Quota-Enforcement</Policy>
+        <Policy>Verify-API-Key</Policy>
+    </Policies>
+    <ProxyEndpoints>
+        <ProxyEndpoint>default</ProxyEndpoint>
+    </ProxyEndpoints>
+    <Resources>
+        <Resource>openapi://association.json</Resource>
+    </Resources>
+    <Spec></Spec>
+    <TargetServers/>
+    <TargetEndpoints>
+        <TargetEndpoint>default</TargetEndpoint>
+    </TargetEndpoints>
+</APIProxy>

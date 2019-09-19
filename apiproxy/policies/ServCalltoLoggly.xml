@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<ServiceCallout async="false" continueOnError="true" enabled="true" name="ServCalltoLoggly">
+    <DisplayName>ServCalltoLoggly</DisplayName>
+    <Properties/>
+    <Request clearPayload="true" variable="myRequest1">
+        <Set>
+            <Headers>
+                <Header name="Content-Type">application/json</Header>
+            </Headers>
+            <Verb>POST</Verb>
+            <Payload contentType="application/json">
+                {
+                    "api": "{apiproxy.name}",
+                    "environment": "{environment.name}",
+                    "verb": "{request.verb}",
+                    "address": "{request.queryparam.address}"
+                }
+            </Payload>
+        </Set>
+        <IgnoreUnresolvedVariables>true</IgnoreUnresolvedVariables>
+    </Request>
+    <Response>logglyresponse</Response>
+    <HTTPTargetConnection>
+        <Properties/>
+        <URL>https://logs-01.loggly.com/inputs/{private.token}/tag/http/</URL>
+    </HTTPTargetConnection>
+</ServiceCallout>

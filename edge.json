@@ -1,0 +1,66 @@
+{
+    "version": "1.0",
+    "envConfig": {
+        "test": {
+          "targetServers": [],
+          "virtualHosts": [],
+          "caches": [],
+          "resourcefiles":[],
+          "flowhooks":[],
+          "kvms": []
+        }
+    },
+    "orgConfig": {
+        "apiProducts": [
+            {
+                "name": "GeomapsProduct",
+                "apiResources": [
+                    "/",
+                    "/**"
+                ],
+                "approvalType": "auto",
+                "attributes": [
+                    {   
+                        "name": "description",
+                        "value": "geomaps product based on Google geocode apis"
+                    },
+                    {
+                        "name": "access",
+                        "value": "public"
+                    }
+                ],
+                "description": "geomaps product based on Google geocode apis",
+                "displayName": "Geomaps Product",
+                "environments": [
+                    "test"
+                ],
+                "proxies": [
+                    "geomaps"
+                ],
+                "quota": "10",
+                "quotaInterval": "1",
+                "quotaTimeUnit": "minute",
+                "scopes": ["A","openid"]
+            }        
+        ],
+        "developers": [
+            {
+                "email": "helene.dozi.demo@gmail.com",
+                "firstName": "Helene",
+                "lastName": "Dozi",
+                "userName": "helenedozi",
+                "attributes": []
+            }
+        ],
+        "developerApps": {
+            "helene.dozi.demo@gmail.com": [
+                {
+                    "name": "geoApp",
+                    "apiProducts": [ "GeomapsProduct" ],
+                    "callbackUrl": "http://localhost/redirect",
+                    "scopes": []
+                }
+            ]
+        }
+    }
+}
